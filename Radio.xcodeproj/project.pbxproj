@@ -12,6 +12,18 @@
 		45177C251F27971700918CDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45177C231F27971700918CDE /* Main.storyboard */; };
 		45177C271F27971700918CDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45177C261F27971700918CDE /* Assets.xcassets */; };
 		45177C2A1F27971700918CDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45177C281F27971700918CDE /* LaunchScreen.storyboard */; };
+		45177C331F27979B00918CDE /* ToastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45177C311F27979B00918CDE /* ToastViewController.swift */; };
+		45177C341F27979B00918CDE /* ToastViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45177C321F27979B00918CDE /* ToastViewController.xib */; };
+		45177C361F279D2200918CDE /* RadioStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45177C351F279D2200918CDE /* RadioStation.swift */; };
+		45177C381F279D9600918CDE /* RequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45177C371F279D9600918CDE /* RequestController.swift */; };
+		45177C3A1F28E93800918CDE /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45177C391F28E93800918CDE /* Extentions.swift */; };
+		45177C3D1F29CF4200918CDE /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45177C3B1F29CF4200918CDE /* FavoritesViewController.swift */; };
+		45177C431F29DD9900918CDE /* Localize(Ru).strings in Resources */ = {isa = PBXBuildFile; fileRef = 45177C451F29DD9900918CDE /* Localize(Ru).strings */; };
+		45177C471F2B496200918CDE /* MusicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45177C461F2B496200918CDE /* MusicTableViewCell.swift */; };
+		45AAA7CD1F2F7DC900FB8C83 /* PlayerPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AAA7CC1F2F7DC900FB8C83 /* PlayerPopUp.swift */; };
+		45AAA7CF1F30C7A600FB8C83 /* LocationManagerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AAA7CE1F30C7A600FB8C83 /* LocationManagerHandler.swift */; };
+		45AAA7D21F31B39100FB8C83 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45AAA7D11F31B39100FB8C83 /* ExternalAccessory.framework */; };
+		45AAA7D51F31B3BA00FB8C83 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45AAA7D41F31B3BA00FB8C83 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +34,21 @@
 		45177C261F27971700918CDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45177C291F27971700918CDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		45177C2B1F27971700918CDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45177C311F27979B00918CDE /* ToastViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastViewController.swift; sourceTree = "<group>"; };
+		45177C321F27979B00918CDE /* ToastViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToastViewController.xib; sourceTree = "<group>"; };
+		45177C351F279D2200918CDE /* RadioStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioStation.swift; sourceTree = "<group>"; };
+		45177C371F279D9600918CDE /* RequestController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestController.swift; sourceTree = "<group>"; };
+		45177C391F28E93800918CDE /* Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
+		45177C3B1F29CF4200918CDE /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		45177C411F29DD8A00918CDE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		45177C421F29DD8A00918CDE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		45177C441F29DD9900918CDE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = "ru.lproj/Localize(Ru).strings"; sourceTree = "<group>"; };
+		45177C461F2B496200918CDE /* MusicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicTableViewCell.swift; sourceTree = "<group>"; };
+		45AAA7CC1F2F7DC900FB8C83 /* PlayerPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerPopUp.swift; sourceTree = "<group>"; };
+		45AAA7CE1F30C7A600FB8C83 /* LocationManagerHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagerHandler.swift; sourceTree = "<group>"; };
+		45AAA7D11F31B39100FB8C83 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		45AAA7D31F31B39100FB8C83 /* Radio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Radio.entitlements; sourceTree = "<group>"; };
+		45AAA7D41F31B3BA00FB8C83 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +56,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45AAA7D21F31B39100FB8C83 /* ExternalAccessory.framework in Frameworks */,
+				45AAA7D51F31B3BA00FB8C83 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,8 +67,10 @@
 		45177C131F27971700918CDE = {
 			isa = PBXGroup;
 			children = (
+				45177C451F29DD9900918CDE /* Localize(Ru).strings */,
 				45177C1E1F27971700918CDE /* Radio */,
 				45177C1D1F27971700918CDE /* Products */,
+				45AAA7D01F31B39100FB8C83 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +85,33 @@
 		45177C1E1F27971700918CDE /* Radio */ = {
 			isa = PBXGroup;
 			children = (
+				45AAA7D31F31B39100FB8C83 /* Radio.entitlements */,
 				45177C1F1F27971700918CDE /* AppDelegate.swift */,
 				45177C211F27971700918CDE /* ViewController.swift */,
 				45177C231F27971700918CDE /* Main.storyboard */,
 				45177C261F27971700918CDE /* Assets.xcassets */,
 				45177C281F27971700918CDE /* LaunchScreen.storyboard */,
 				45177C2B1F27971700918CDE /* Info.plist */,
+				45177C311F27979B00918CDE /* ToastViewController.swift */,
+				45177C321F27979B00918CDE /* ToastViewController.xib */,
+				45177C351F279D2200918CDE /* RadioStation.swift */,
+				45177C371F279D9600918CDE /* RequestController.swift */,
+				45177C391F28E93800918CDE /* Extentions.swift */,
+				45177C3B1F29CF4200918CDE /* FavoritesViewController.swift */,
+				45177C461F2B496200918CDE /* MusicTableViewCell.swift */,
+				45AAA7CC1F2F7DC900FB8C83 /* PlayerPopUp.swift */,
+				45AAA7CE1F30C7A600FB8C83 /* LocationManagerHandler.swift */,
 			);
 			path = Radio;
+			sourceTree = "<group>";
+		};
+		45AAA7D01F31B39100FB8C83 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				45AAA7D41F31B3BA00FB8C83 /* AudioToolbox.framework */,
+				45AAA7D11F31B39100FB8C83 /* ExternalAccessory.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -98,6 +148,14 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = R3JX6N7H4S;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InterAppAudio = {
+								enabled = 1;
+							};
+							com.apple.WAC = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -126,6 +184,8 @@
 			files = (
 				45177C2A1F27971700918CDE /* LaunchScreen.storyboard in Resources */,
 				45177C271F27971700918CDE /* Assets.xcassets in Resources */,
+				45177C431F29DD9900918CDE /* Localize(Ru).strings in Resources */,
+				45177C341F27979B00918CDE /* ToastViewController.xib in Resources */,
 				45177C251F27971700918CDE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,7 +198,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				45177C221F27971700918CDE /* ViewController.swift in Sources */,
+				45177C381F279D9600918CDE /* RequestController.swift in Sources */,
+				45AAA7CD1F2F7DC900FB8C83 /* PlayerPopUp.swift in Sources */,
+				45AAA7CF1F30C7A600FB8C83 /* LocationManagerHandler.swift in Sources */,
+				45177C3D1F29CF4200918CDE /* FavoritesViewController.swift in Sources */,
+				45177C3A1F28E93800918CDE /* Extentions.swift in Sources */,
+				45177C331F27979B00918CDE /* ToastViewController.swift in Sources */,
+				45177C361F279D2200918CDE /* RadioStation.swift in Sources */,
 				45177C201F27971700918CDE /* AppDelegate.swift in Sources */,
+				45177C471F2B496200918CDE /* MusicTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +217,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				45177C241F27971700918CDE /* Base */,
+				45177C411F29DD8A00918CDE /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -157,8 +226,17 @@
 			isa = PBXVariantGroup;
 			children = (
 				45177C291F27971700918CDE /* Base */,
+				45177C421F29DD8A00918CDE /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		45177C451F29DD9900918CDE /* Localize(Ru).strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				45177C441F29DD9900918CDE /* ru */,
+			);
+			name = "Localize(Ru).strings";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -168,6 +246,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -219,6 +298,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -263,8 +343,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Radio/Radio.entitlements;
 				DEVELOPMENT_TEAM = R3JX6N7H4S;
 				INFOPLIST_FILE = Radio/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swift.Radio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -276,8 +358,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Radio/Radio.entitlements;
 				DEVELOPMENT_TEAM = R3JX6N7H4S;
 				INFOPLIST_FILE = Radio/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swift.Radio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -304,6 +388,7 @@
 				45177C301F27971700918CDE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
