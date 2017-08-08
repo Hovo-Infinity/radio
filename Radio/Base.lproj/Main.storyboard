@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -225,7 +226,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="179.71014492753625" y="478.53260869565219"/>
+            <point key="canvasLocation" x="190" y="519"/>
         </scene>
         <!--Favorites View Controller-->
         <scene sceneID="jbk-pU-ZCW">
@@ -251,23 +252,34 @@
                                                 <action selector="Back:" destination="BPh-ip-y7M" id="tLg-n9-MF2"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="jst-qP-WeG">
-                                            <connections>
-                                                <action selector="save:" destination="BPh-ip-y7M" id="sTL-5Y-wxc"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <rightBarButtonItems>
+                                            <barButtonItem systemItem="save" id="jst-qP-WeG">
+                                                <connections>
+                                                    <action selector="save:" destination="BPh-ip-y7M" id="sTL-5Y-wxc"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Edit" id="8Sc-sB-KGS">
+                                                <connections>
+                                                    <action selector="edit:" destination="BPh-ip-y7M" id="k26-E1-bA8"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="61" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="weW-73-Q16">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <progressView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" id="VWJ-J4-e8C">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="2.5"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </progressView>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MusicCell" id="zOH-0V-EOF" customClass="MusicTableViewCell" customModule="Radio" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1" width="375" height="61"/>
+                                        <rect key="frame" x="0.0" y="4" width="375" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zOH-0V-EOF" id="Y5E-0g-9FL">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ouD-SA-eqX">
@@ -278,16 +290,16 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yYc-3K-J2X">
-                                                    <rect key="frame" x="56" y="8.5" width="203" height="40.5"/>
+                                                    <rect key="frame" x="56" y="8.5" width="258" height="40.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label :)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gxs-bc-tCt">
-                                                            <rect key="frame" x="0.0" y="0.0" width="203" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="258" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoD-Jx-6iP">
-                                                            <rect key="frame" x="0.0" y="20.5" width="203" height="20"/>
+                                                            <rect key="frame" x="0.0" y="20.5" width="258" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -298,7 +310,7 @@
                                                     </constraints>
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wid-pc-90M">
-                                                    <rect key="frame" x="267" y="8.5" width="45" height="45"/>
+                                                    <rect key="frame" x="322" y="8.5" width="45" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44.5" id="Jej-nc-cJ4"/>
                                                         <constraint firstAttribute="width" constant="44.5" id="x30-of-rvK"/>
@@ -309,6 +321,7 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="ouD-SA-eqX" secondAttribute="bottom" constant="8" id="1KS-GY-fha"/>
                                                 <constraint firstItem="yYc-3K-J2X" firstAttribute="top" secondItem="ouD-SA-eqX" secondAttribute="top" id="Gg3-A9-Nfy"/>
@@ -321,10 +334,13 @@
                                                 <constraint firstItem="ouD-SA-eqX" firstAttribute="top" secondItem="Y5E-0g-9FL" secondAttribute="top" constant="8" id="yOn-k7-6GL"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
                                         <connections>
                                             <outlet property="playButton" destination="wid-pc-90M" id="d16-BX-Iev"/>
                                             <outletCollection property="labels" destination="Gxs-bc-tCt" collectionClass="NSMutableArray" id="afS-16-B97"/>
                                             <outletCollection property="labels" destination="hoD-Jx-6iP" collectionClass="NSMutableArray" id="0f2-dL-VQ4"/>
+                                            <outletCollection property="gestureRecognizers" destination="rLw-iP-SAz" appends="YES" id="dLK-ul-wTV"/>
+                                            <outletCollection property="gestureRecognizers" destination="qyZ-G6-Zzm" appends="YES" id="QqV-i9-rZq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -346,11 +362,25 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="editButton" destination="8Sc-sB-KGS" id="OF8-hb-kRF"/>
+                        <outlet property="progressView" destination="VWJ-J4-e8C" id="qO0-aJ-goO"/>
                         <outlet property="saveButton" destination="jst-qP-WeG" id="ttu-8k-YLU"/>
                         <outlet property="tableView" destination="weW-73-Q16" id="R5E-w3-6vQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xBV-PG-K1G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="rLw-iP-SAz">
+                    <connections>
+                        <action selector="swipeHandler:" destination="BPh-ip-y7M" id="eIs-6m-y5Z"/>
+                        <outlet property="delegate" destination="BPh-ip-y7M" id="nBf-mw-eQ8"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="qyZ-G6-Zzm">
+                    <connections>
+                        <action selector="swipeHandler:" destination="BPh-ip-y7M" id="y2m-R8-BMa"/>
+                        <outlet property="delegate" destination="BPh-ip-y7M" id="3YT-Yx-u7K"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="875.625" y="121.47887323943662"/>
         </scene>
@@ -364,6 +394,6 @@
         <image name="radio" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cds-aP-eiJ"/>
+        <segue reference="ENT-Gj-mIh"/>
     </inferredMetricsTieBreakers>
 </document>

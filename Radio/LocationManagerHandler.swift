@@ -16,7 +16,7 @@ class LocationManagerHandler: NSObject, CLLocationManagerDelegate {
     private override init() {
         manager = CLLocationManager();
         geocoder = CLGeocoder();
-        countryCode = Locale.current.regionCode!;
+        countryCode = Locale.current.regionCode ?? "am";
         super.init();
         manager.requestWhenInUseAuthorization();
         if CLLocationManager.locationServicesEnabled() {

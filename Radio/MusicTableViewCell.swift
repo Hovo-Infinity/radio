@@ -75,6 +75,6 @@ class MusicTableViewCell: UITableViewCell, AVAudioPlayerDelegate {
     }
     
     func audioPlayerBeginInterruption(_ player: AVAudioPlayer) {
-        print("CurrentTime = (player.currentTime) /n");
+        print("CurrentTime = \(player.currentTime) /n");
     }
 }
