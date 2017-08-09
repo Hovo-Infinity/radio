@@ -19,6 +19,7 @@ class Downloader: NSObject, URLSessionDownloadDelegate {
     private var dataTask:URLSessionDownloadTask? = nil;
     private var session:URLSession? = nil;
     private var url:URL? = nil;
+    private var totalPercent:Float = 0;
     
     class func downloader() -> Downloader {
         return _downloader;
@@ -57,7 +58,9 @@ class Downloader: NSObject, URLSessionDownloadDelegate {
     
     public func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         let percent:Float = Float(bytesWritten) / Float(totalBytesExpectedToWrite);
-        let info:[String : Any] = ["url":url as Any, "path":savePath as Any, "percent":percent];
+        totalPercent += percent;
+        print("downloading... \(totalPercent * 100)%");
+        let info:[String : Any] = ["url":url as Any, "path":savePath as Any, "percent":totalPercent];
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: kDownloadInprogress), object: self, userInfo: info);
     }
 }

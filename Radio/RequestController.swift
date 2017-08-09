@@ -29,7 +29,7 @@ class RequestController: NSObject {
         let UrlRequest:NSMutableURLRequest = NSMutableURLRequest(url: _URL!, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 3);
         UrlRequest.httpMethod = "GET";
         let session:URLSession = URLSession(configuration: URLSessionConfiguration.default);
-        let dataTask = session.dataTask(with: UrlRequest as URLRequest) { (data, UrlResponse, error) in
+        let dataTask = session.dataTask(with: UrlRequest as URLRequest) { [unowned self](data, UrlResponse, error) in
             if error == nil {
                 let response = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableLeaves);
                 if let handler = self.comlition {

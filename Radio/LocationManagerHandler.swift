@@ -30,7 +30,7 @@ class LocationManagerHandler: NSObject, CLLocationManagerDelegate {
         return _sharedManager;
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (action) in
+        let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { [unowned self](action) in
             self.countryCode = Locale.current.regionCode!;
         };
         let alert = UIAlertController(title: "", message: "Can Not Take Location, region will be change to (Locale.current.countryCode!)", preferredStyle: UIAlertControllerStyle.alert);
@@ -41,7 +41,7 @@ class LocationManagerHandler: NSObject, CLLocationManagerDelegate {
         guard let location = locations.first else {
             return;
         };
-        geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+        geocoder.reverseGeocodeLocation(location) { [unowned self](placemarks, error) in
             guard let currentLocPlacemark = placemarks?.first else { return };
             self.countryCode = currentLocPlacemark.isoCountryCode ?? Locale.current.regionCode!;
 

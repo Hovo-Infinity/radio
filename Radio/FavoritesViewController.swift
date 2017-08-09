@@ -28,7 +28,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var editButton: UIBarButtonItem!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad();
         self.navigationItem.title = NSLocalizedString("gen_favorites", comment: "");
         if self.urlRequest != nil {
             self.saveButton.isEnabled = true;
@@ -86,9 +86,10 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         alertController.addTextField { (textField) in
             textField.placeholder = "Name";
         }
-        let ok = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) { (action) in
+        let ok = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) { [unowned self](action) in
             self.songName = ((alertController.textFields?.first?.text!)?.appending(".mp3"))!;
             Downloader.downloader().download(url: (self.urlRequest?.url!)!, saveTo: FileManager.songPath().appendingPathComponent(self.songName));
+            self.saveButton.isEnabled = false;
         }
         let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil);
         alertController.addAction(ok);
@@ -107,13 +108,14 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func edit(_ sender: UIBarButtonItem) {
-        if (tableView.isEditing) {
+        /*if (tableView.isEditing) {
             sender.title = "Edit";
             tableView.setEditing(false, animated: true);
         } else {
             sender.title = "Done";
             tableView.setEditing(true, animated: true);
-        }
+        }*/
+        Downloader.downloader().download(url: URL(string: "https://eoimages.gsfc.nasa.gov/images/imagerecords/78000/78314/VIIRS_3Feb2012_lrg.jpg")!, saveTo: FileManager.songPath().appendingPathComponent("nasaimage"));
     }
     
     @IBAction func Back(_ sender: Any) {
@@ -147,7 +149,6 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     func downloadProgress(notificatin:Notification) {
         let info = notificatin.userInfo;
         let percent = info?["percent"] as! Float;
-        print("downloading... \(percent * 100)%");
         progressView.setProgress(percent, animated: true);
     }
 }
