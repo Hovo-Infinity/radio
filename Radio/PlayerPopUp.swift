@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import AVFoundation
 
 class PlayerPopUp: UIView {
     static let sharedPopUp = PlayerPopUp(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 88, height: 88)));
     var isShow:Bool = false;
     private var playerView:UIView? = nil;
+    private var closeBtn:UIButton! = nil;
+    public private(set) var seekBar:UISlider?;
     
     override init(frame: CGRect) {
         super.init(frame: frame);
@@ -29,10 +32,13 @@ class PlayerPopUp: UIView {
     private func setupPlayerView() {
         playerView = UIView.init(frame: CGRect(x: self.frame.maxX - 20, y: self.frame.maxY - 20, width: 100, height: 200));
         playerView?.backgroundColor = .cyan;
-        let closeBtn = UIButton(frame: CGRect(origin: CGPoint(x: 30, y: 30), size: CGSize(width: 45, height: 45)));
-        playerView?.addSubview(closeBtn);
-        closeBtn.addTarget(self, action: #selector(closePlayerview), for: .touchUpInside);
-        closeBtn.backgroundColor = .red;
+        closeBtn = UIButton(frame: CGRect(origin: CGPoint(x: 30, y: 30), size: CGSize(width: 45, height: 45)));
+        playerView?.addSubview(closeBtn!);
+        closeBtn?.addTarget(self, action: #selector(closePlayerview), for: .touchUpInside);
+        closeBtn?.backgroundColor = .red;
+        seekBar = UISlider(frame: CGRect(x: 0, y: 20, width: (playerView?.frame.width)!, height: 20));
+        AVPlayer.sharedPlayer.addObserver(seekBar, forTimePeriod: 1);
+        playerView?.addSubview(seekBar!);
         self.insertSubview(playerView!, belowSubview: self.subviews[0]);
     }
     

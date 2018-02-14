@@ -11,55 +11,101 @@ import AVKit
 import AVFoundation
 
 class FavoritesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
-    public var urlRequest:NSURLRequest? = nil;
-    private var songName:String = "";
+    public var urlRequest:NSURLRequest? = nil
+    private var songName:String = ""
     private var musicURLs:Array<URL> {
         get {
             do {
-                return try FileManager.default.contentsOfDirectory(at: FileManager.songPath());
+                return try FileManager.default.contentsOfDirectory(at: FileManager.songPath())
             } catch {
-                return [];
+                return []
             }
         }
     }
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var progressView: UIProgressView!
-    @IBOutlet weak var editButton: UIBarButtonItem!
     
     override func viewDidLoad() {
-        super.viewDidLoad();
-        self.navigationItem.title = NSLocalizedString("gen_favorites", comment: "");
-        if self.urlRequest != nil {
-            self.saveButton.isEnabled = true;
-        } else {
-            self.saveButton.isEnabled = false;
+        super.viewDidLoad()
+        let session = AVAudioSession.sharedInstance()
+        do {
+            if #available(iOS 10.0, *) {
+                try session.setCategory(AVAudioSessionCategoryPlayback,
+                                        mode: AVAudioSessionModeMoviePlayback,
+                                        options: [])
+            } else {
+                // Fallback on earlier versions
+                try session.setMode(AVAudioSessionModeMoviePlayback)
+                try session.setCategory(AVAudioSessionCategoryPlayback)
+            }
+            do {
+                try session.setActive(true)
+            } catch {
+                print("Unable to activate audio session: \(error.localizedDescription)")
+            }
+        } catch let error as NSError {
+            print ("Failed to set the audio session category and mode : \(String(describing: error.localizedFailureReason))")
         }
-        NotificationCenter.default.addObserver(self, selector: #selector(downloadSuccess(notificatin:)), name: NSNotification.Name(rawValue: kDownloadSuccess), object: nil);
-        NotificationCenter.default.addObserver(self, selector: #selector(downloadFail(notificatin:)), name: NSNotification.Name(rawValue: kDownloadFail), object: nil);
-        NotificationCenter.default.addObserver(self, selector: #selector(downloadProgress(notificatin:)), name: NSNotification.Name(rawValue: kDownloadInprogress), object: nil);
+        self.navigationItem.title = NSLocalizedString("gen_favorites", comment: "")
+        if self.urlRequest != nil {
+            self.saveButton.isEnabled = true
+        } else {
+            self.saveButton.isEnabled = false
+        }
+        NotificationCenter.default.addObserver(self, selector: #selector(downloadSuccess(notificatin:)), name: NSNotification.Name(rawValue: kDownloadSuccess), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(downloadFail(notificatin:)), name: NSNotification.Name(rawValue: kDownloadFail), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(downloadProgress(notificatin:)), name: NSNotification.Name(rawValue: kDownloadInprogress), object: nil)
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.musicURLs.count;
+        return self.musicURLs.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:MusicTableViewCell = tableView.dequeueReusableCell(withIdentifier: "MusicCell", for: indexPath) as! MusicTableViewCell;
-        cell.setURL(url: self.musicURLs[indexPath.row]);
-        return cell;
+        let url = self.musicURLs[indexPath.row]
+        if FileManager.default.directoryExcist(atPath: url.path) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "directoryCell", for: indexPath)
+            cell.textLabel?.text = url.lastPathComponent
+            return cell
+        } else {
+            let cell:MusicTableViewCell = tableView.dequeueReusableCell(withIdentifier: "MusicCell", for: indexPath) as! MusicTableViewCell
+            cell.setURL(_url: self.musicURLs[indexPath.row]);
+            return cell
+        }
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if !PlayerPopUp.sharedPopUp.isShow {
-            PlayerPopUp.sharedPopUp.show();
-        }
+        
     }
     
     public func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
         
     }
     
+    public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let groupAction = UITableViewRowAction(style: .default, title: NSLocalizedString("move_to", comment: "")) { (action, indexPath) in
+            let cell:MusicTableViewCell = tableView.cellForRow(at: indexPath) as! MusicTableViewCell;
+            if FileManager.default.createSubdirectoryOfSongPath(maned: "Rap") {
+                do {
+                    try FileManager.default.moveItem(at: cell.url!, to: FileManager.songPath().appendingPathComponent("Rap").appendingPathComponent((cell.url?.lastPathComponent)!))
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+        groupAction.backgroundColor = .gray
+        let deleteAction = UITableViewRowAction(style: .destructive, title: NSLocalizedString("delete", comment: "")) { [unowned self](action, indexPath) in
+            do {
+                try FileManager.default.removeItem(at: self.musicURLs[indexPath.row]);
+                tableView .deleteRows(at: [indexPath], with: .fade)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        deleteAction.backgroundColor = .red
+        return [groupAction, deleteAction]
+    }
     
     public func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
         return true;
@@ -73,82 +119,69 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         if (editingStyle == .delete) {
             do {
                 try FileManager.default.removeItem(at: self.musicURLs[indexPath.row]);
-                tableView .deleteRows(at: [indexPath], with: .fade);
+                tableView .deleteRows(at: [indexPath], with: .fade)
             } catch {
-                print(error.localizedDescription);
+                print(error.localizedDescription)
             }
         }
     }
     
 
     @IBAction func save(_ sender: Any) {
-        let alertController = UIAlertController(title: "Save", message: "Write Song Name", preferredStyle: UIAlertControllerStyle.alert);
+        let alertController = UIAlertController(title: "Save", message: "Write Song Name", preferredStyle: UIAlertControllerStyle.alert)
         alertController.addTextField { (textField) in
-            textField.placeholder = "Name";
+            textField.placeholder = "Name"
         }
         let ok = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) { [unowned self](action) in
-            self.songName = ((alertController.textFields?.first?.text!)?.appending(".mp3"))!;
-            Downloader.downloader().download(url: (self.urlRequest?.url!)!, saveTo: FileManager.songPath().appendingPathComponent(self.songName));
-            self.saveButton.isEnabled = false;
+            self.songName = ((alertController.textFields?.first?.text!)?.appending(".mp3"))!
+            Downloader.downloader().download(url: (self.urlRequest?.url!)!, saveTo: FileManager.songPath().appendingPathComponent(self.songName))
+            self.saveButton.isEnabled = false
         }
-        let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil);
-        alertController.addAction(ok);
-        alertController.addAction(cancel);
-        self.present(alertController, animated: true, completion: nil);
+        let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil)
+        alertController.addAction(ok)
+        alertController.addAction(cancel)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func swipeHandler(_ sender:UISwipeGestureRecognizer?) {
         if (sender?.direction == .left) {
-            editButton.title = "Done";
-            tableView.setEditing(true, animated: true);
+            tableView.setEditing(true, animated: true)
         } else if (sender?.direction == .right) {
-            editButton.title = "Edit";
-            tableView.setEditing(false, animated: true);
+            tableView.setEditing(false, animated: true)
         }
     }
     
-    @IBAction func edit(_ sender: UIBarButtonItem) {
-        /*if (tableView.isEditing) {
-            sender.title = "Edit";
-            tableView.setEditing(false, animated: true);
-        } else {
-            sender.title = "Done";
-            tableView.setEditing(true, animated: true);
-        }*/
-        Downloader.downloader().download(url: URL(string: "https://eoimages.gsfc.nasa.gov/images/imagerecords/78000/78314/VIIRS_3Feb2012_lrg.jpg")!, saveTo: FileManager.songPath().appendingPathComponent("nasaimage"));
-    }
-    
-    @IBAction func Back(_ sender: Any) {
+    @IBAction func back(_ sender: Any) {
         if let _ = self.navigationController?.viewControllers.first?.isEqual(self) {
             if self.presentingViewController != nil {
-                self.dismiss(animated: true, completion: nil);
+                self.dismiss(animated: true, completion: nil)
             }
         } else if self.navigationController == nil && self.presentingViewController != nil {
-            self.dismiss(animated: true, completion: nil);
+            self.dismiss(animated: true, completion: nil)
         } else {
-            self.navigationController?.popViewController(animated: true);
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true;
+        return true
     }
     
     @objc
     func downloadSuccess(notificatin:Notification) {
-        progressView.progress = 0;
-        tableView.reloadData();
+        progressView.progress = 0
+        tableView.reloadData()
     }
     
     @objc
     func downloadFail(notificatin:Notification) {
-        progressView.setProgress(0, animated: true);
+        progressView.setProgress(0, animated: true)
     }
     
     @objc
     func downloadProgress(notificatin:Notification) {
-        let info = notificatin.userInfo;
-        let percent = info?["percent"] as! Float;
-        progressView.setProgress(percent, animated: true);
+        let info = notificatin.userInfo
+        let percent = info?["percent"] as! Float
+        progressView.setProgress(percent, animated: true)
     }
 }

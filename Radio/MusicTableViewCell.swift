@@ -10,16 +10,15 @@ import UIKit
 import AVFoundation
 
 class MusicTableViewCell: UITableViewCell, AVAudioPlayerDelegate {
-    private let player = AVQueuePlayer.sharedPlayer;
-    private var anItem : AVPlayerItem? = nil;
-    private var url:String? = "";
-    @IBOutlet var labels: [UILabel]!
+    private let player = AVQueuePlayer.sharedPlayer
+    public var anItem : AVPlayerItem? = nil
+    public var url:URL? = nil
     @IBOutlet weak var playButton: UIButton!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        print("CountryCode = %@",LocationManagerHandler.sharedManager().countryCode);
+        print("CountryCode = %@",LocationManagerHandler.sharedManager().countryCode)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -30,51 +29,65 @@ class MusicTableViewCell: UITableViewCell, AVAudioPlayerDelegate {
 
     @IBAction func play(_ sender: Any) {
         if (self.player.currentItem != self.anItem) {
-            self.player.stop();
-            self.player.replaceCurrentItem(with: self.anItem);
-            self.player.play();
+            self.player.stop()
+            self.player.replaceCurrentItem(with: self.anItem)
+            self.player.play()
         } else {
             if (self.player.status == AVPlayerStatus.readyToPlay) {
                 if #available(iOS 10.0, *) {
                     if (self.player.timeControlStatus == AVPlayerTimeControlStatus.waitingToPlayAtSpecifiedRate ||
                         self.player.timeControlStatus == AVPlayerTimeControlStatus.paused) {
-                        self.player.play();
+                        self.player.play()
                     } else {
-                        self.player.pause();
+                        self.player.pause()
                     }
                 } else {
                     // Fallback on earlier versions
                     if (self.player.rate == 0.0) {
-                        self.player.play();
+                        self.player.play()
                     } else {
-                        player.pause();
+                        player.pause()
                     }
                 }
             } else {
                 let alert = UIAlertController(title:
-                    self.player.error?.localizedDescription, message: nil, preferredStyle: UIAlertControllerStyle.alert);
+                    self.player.error?.localizedDescription, message: nil, preferredStyle: UIAlertControllerStyle.alert)
                 let ok = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil);
-                alert.addAction(ok);
-                UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil);
+                alert.addAction(ok)
+                UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
             }
         }
     }
     
-    func setURL(url:URL) {
-        let asset = AVAsset(url: url);
-        self.anItem = AVPlayerItem(asset: asset);
+    func setURL(_url:URL) {
+        url = _url;
+        let asset = AVAsset(url: url!)
+        self.anItem = AVPlayerItem(asset: asset)
         for metaData:AVMetadataItem in asset.commonMetadata {
-            if metaData.commonKey?.caseInsensitiveCompare("artist") == ComparisonResult.orderedSame {
-                self.labels.last?.text = metaData.commonKey! + " " + (metaData.value as! String);
-            } else if metaData.commonKey?.caseInsensitiveCompare("title") == ComparisonResult.orderedSame {
-                self.labels.first?.text = metaData.commonKey! + " " + (metaData.value as! String);
+            if metaData.commonKey?.rawValue.caseInsensitiveCompare("artist") == ComparisonResult.orderedSame {
+                self.textLabel?.text = (metaData.value as! String)
+            } else if metaData.commonKey?.rawValue.caseInsensitiveCompare("title") == ComparisonResult.orderedSame {
+                self.detailTextLabel?.text = (metaData.value as! String)
             } else {
-                self.labels.first?.text = "I smile :)"
+                self.textLabel?.text = "Unknown"
+                self.detailTextLabel?.text = "Unknown"
+            }
+        }
+        let keys : [String] = ["commonMetadata"]
+        asset.loadValuesAsynchronously(forKeys: keys) {
+            let artWorks = AVMetadataItem.metadataItems(from: asset.commonMetadata, withKey: AVMetadataKey.commonKeyArtwork, keySpace: AVMetadataKeySpace.common)
+            for item : AVMetadataItem in artWorks {
+                if item.keySpace == AVMetadataKeySpace.id3 {
+                    let data = item.dataValue
+//                    self.imageView?.image = UIImage.init(data: (data)!)
+                } else if item.keySpace == AVMetadataKeySpace.iTunes {
+//                    self.imageView?.image = UIImage.init(data: item.value?.copy(with: nil) as! Data)
+                }
             }
         }
     }
     
     func audioPlayerBeginInterruption(_ player: AVAudioPlayer) {
-        print("CurrentTime = \(player.currentTime) /n");
+        print("CurrentTime = \(player.currentTime) /n")
     }
 }

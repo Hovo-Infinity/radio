@@ -16,7 +16,7 @@ class RequestController: NSObject {
     var failure:((_ error:Error)->Void)? = nil;
     
     class func getStationInYourLocation() -> URL {
-        let manager = Locale.current.regionCode
+        let _ = Locale.current.regionCode
         return URL(string: "stroig")!;
     }
     

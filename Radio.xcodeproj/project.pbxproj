@@ -16,13 +16,15 @@
 		45177C381F279D9600918CDE /* RequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45177C371F279D9600918CDE /* RequestController.swift */; };
 		45177C3A1F28E93800918CDE /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45177C391F28E93800918CDE /* Extentions.swift */; };
 		45177C3D1F29CF4200918CDE /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45177C3B1F29CF4200918CDE /* FavoritesViewController.swift */; };
-		45177C431F29DD9900918CDE /* Localize(Ru).strings in Resources */ = {isa = PBXBuildFile; fileRef = 45177C451F29DD9900918CDE /* Localize(Ru).strings */; };
+		45177C431F29DD9900918CDE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45177C451F29DD9900918CDE /* Localizable.strings */; };
 		45177C471F2B496200918CDE /* MusicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45177C461F2B496200918CDE /* MusicTableViewCell.swift */; };
+		459EF7A31F3DC243007FF197 /* VarticalSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459EF7A21F3DC243007FF197 /* VarticalSlider.swift */; };
 		45AAA7CD1F2F7DC900FB8C83 /* PlayerPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AAA7CC1F2F7DC900FB8C83 /* PlayerPopUp.swift */; };
 		45AAA7CF1F30C7A600FB8C83 /* LocationManagerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AAA7CE1F30C7A600FB8C83 /* LocationManagerHandler.swift */; };
 		45AAA7D21F31B39100FB8C83 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45AAA7D11F31B39100FB8C83 /* ExternalAccessory.framework */; };
 		45AAA7D51F31B3BA00FB8C83 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45AAA7D41F31B3BA00FB8C83 /* AudioToolbox.framework */; };
 		45BF0C4F1F3A0FDB00003AB6 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BF0C4E1F3A0FDB00003AB6 /* Downloader.swift */; };
+		45C9F82920320F560072D481 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45C9F82B20320F560072D481 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,14 +41,16 @@
 		45177C3B1F29CF4200918CDE /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		45177C411F29DD8A00918CDE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		45177C421F29DD8A00918CDE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		45177C441F29DD9900918CDE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = "ru.lproj/Localize(Ru).strings"; sourceTree = "<group>"; };
+		45177C441F29DD9900918CDE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		45177C461F2B496200918CDE /* MusicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicTableViewCell.swift; sourceTree = "<group>"; };
+		459EF7A21F3DC243007FF197 /* VarticalSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VarticalSlider.swift; sourceTree = "<group>"; };
 		45AAA7CC1F2F7DC900FB8C83 /* PlayerPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerPopUp.swift; sourceTree = "<group>"; };
 		45AAA7CE1F30C7A600FB8C83 /* LocationManagerHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagerHandler.swift; sourceTree = "<group>"; };
 		45AAA7D11F31B39100FB8C83 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		45AAA7D31F31B39100FB8C83 /* Radio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Radio.entitlements; sourceTree = "<group>"; };
 		45AAA7D41F31B3BA00FB8C83 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		45BF0C4E1F3A0FDB00003AB6 /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
+		45C9F82A20320F560072D481 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +69,8 @@
 		45177C131F27971700918CDE = {
 			isa = PBXGroup;
 			children = (
-				45177C451F29DD9900918CDE /* Localize(Ru).strings */,
+				45C9F82B20320F560072D481 /* Localizable.strings */,
+				45177C451F29DD9900918CDE /* Localizable.strings */,
 				45177C1E1F27971700918CDE /* Radio */,
 				45177C1D1F27971700918CDE /* Products */,
 				45AAA7D01F31B39100FB8C83 /* Frameworks */,
@@ -98,6 +103,7 @@
 				45AAA7CC1F2F7DC900FB8C83 /* PlayerPopUp.swift */,
 				45AAA7CE1F30C7A600FB8C83 /* LocationManagerHandler.swift */,
 				45BF0C4E1F3A0FDB00003AB6 /* Downloader.swift */,
+				459EF7A21F3DC243007FF197 /* VarticalSlider.swift */,
 			);
 			path = Radio;
 			sourceTree = "<group>";
@@ -138,14 +144,18 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Hovhannes Stepanyan";
 				TargetAttributes = {
 					45177C1B1F27971700918CDE = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = R3JX6N7H4S;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.InterAppAudio = {
 								enabled = 1;
 							};
@@ -181,7 +191,8 @@
 			files = (
 				45177C2A1F27971700918CDE /* LaunchScreen.storyboard in Resources */,
 				45177C271F27971700918CDE /* Assets.xcassets in Resources */,
-				45177C431F29DD9900918CDE /* Localize(Ru).strings in Resources */,
+				45177C431F29DD9900918CDE /* Localizable.strings in Resources */,
+				45C9F82920320F560072D481 /* Localizable.strings in Resources */,
 				45177C251F27971700918CDE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,6 +206,7 @@
 			files = (
 				45BF0C4F1F3A0FDB00003AB6 /* Downloader.swift in Sources */,
 				45177C221F27971700918CDE /* ViewController.swift in Sources */,
+				459EF7A31F3DC243007FF197 /* VarticalSlider.swift in Sources */,
 				45177C381F279D9600918CDE /* RequestController.swift in Sources */,
 				45AAA7CD1F2F7DC900FB8C83 /* PlayerPopUp.swift in Sources */,
 				45AAA7CF1F30C7A600FB8C83 /* LocationManagerHandler.swift in Sources */,
@@ -227,12 +239,20 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		45177C451F29DD9900918CDE /* Localize(Ru).strings */ = {
+		45177C451F29DD9900918CDE /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				45177C441F29DD9900918CDE /* ru */,
 			);
-			name = "Localize(Ru).strings";
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		45C9F82B20320F560072D481 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				45C9F82A20320F560072D481 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -249,7 +269,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -257,7 +279,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -286,6 +312,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -301,7 +328,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -309,7 +338,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -330,6 +363,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -339,6 +373,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Radio/Radio.entitlements;
 				DEVELOPMENT_TEAM = R3JX6N7H4S;
 				INFOPLIST_FILE = Radio/Info.plist;
@@ -346,7 +381,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swift.Radio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -354,6 +390,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Radio/Radio.entitlements;
 				DEVELOPMENT_TEAM = R3JX6N7H4S;
 				INFOPLIST_FILE = Radio/Info.plist;
@@ -361,7 +398,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swift.Radio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

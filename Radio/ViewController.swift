@@ -22,10 +22,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        UIApplication.shared.beginBackgroundTask {
-            AVPlayer.sharedPlayer.play();
-        }
         self.webView.loadRequest(URLRequest(url: URL(string: "http://google.com")!));
         self.browserBack.isEnabled = self.webView.canGoBack;
         self.browserFarward.isEnabled = self.webView.canGoForward;

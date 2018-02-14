@@ -1,0 +1,11 @@
+/* 
+  Localize(En).strings
+  Radio
+
+  Created by Hovhannes Stepanyan on 2/12/18.
+  Copyright © 2018 Hovhannes Stepanyan. All rights reserved.
+*/
+
+"gen_favorites" = "Favorites";
+"delete" = "Delete";
+"move_to" = "Move to";
