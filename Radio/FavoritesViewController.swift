@@ -76,7 +76,11 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let url = self.musicURLs[indexPath.row]
+        if FileManager.default.directoryExcist(atPath: url.path) {
+            let viewController = FavoritesViewController()
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
     
     public func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
