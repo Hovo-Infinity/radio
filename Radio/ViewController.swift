@@ -83,7 +83,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIWebViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "save" {
-            let vc:FavoritesViewController = segue.destination as! FavoritesViewController;
+            guard let navigation:UINavigationController = segue.destination as? UINavigationController else { return }
+            guard let vc:FavoritesViewController = navigation.topViewController as? FavoritesViewController else { return }
             vc.urlRequest = self.downloadableURL! as NSURLRequest;
             self.addButton.isEnabled = true;
         }
