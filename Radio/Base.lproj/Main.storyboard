@@ -254,14 +254,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QpQ-yL-qkI">
-                                                    <rect key="frame" x="319" y="8" width="40" height="40"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" backgroundImage="play"/>
-                                                    <connections>
-                                                        <action selector="play:" destination="zOH-0V-EOF" eventType="touchUpInside" id="Wgg-kN-Wh0"/>
-                                                    </connections>
-                                                </button>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="E9Z-zZ-WlL">
                                                     <rect key="frame" x="15" y="9.9999999999999982" width="33.333333333333336" height="20.333333333333332"/>
                                                     <autoresizingMask key="autoresizingMask"/>
@@ -281,7 +273,6 @@
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
                                         <connections>
-                                            <outlet property="playButton" destination="QpQ-yL-qkI" id="UkF-YZ-5hf"/>
                                             <outletCollection property="gestureRecognizers" destination="rLw-iP-SAz" appends="YES" id="dLK-ul-wTV"/>
                                             <outletCollection property="gestureRecognizers" destination="qyZ-G6-Zzm" appends="YES" id="QqV-i9-rZq"/>
                                             <segue destination="HgW-5i-MRO" kind="push" id="3Rf-q4-5Nq"/>
@@ -408,7 +399,6 @@
         <image name="deck" width="213" height="378"/>
         <image name="downloadedMusic" width="400" height="400"/>
         <image name="farword" width="42" height="42"/>
-        <image name="play" width="170" height="170"/>
         <image name="radio" width="170" height="170"/>
     </resources>
     <inferredMetricsTieBreakers>

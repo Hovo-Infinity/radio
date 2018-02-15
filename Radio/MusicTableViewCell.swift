@@ -13,21 +13,37 @@ class MusicTableViewCell: UITableViewCell, AVAudioPlayerDelegate {
     private let player = AVQueuePlayer.sharedPlayer
     public var anItem : AVPlayerItem? = nil
     public var url:URL? = nil
-    @IBOutlet weak var playButton: UIButton!
+    var playButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         print("CountryCode = %@",LocationManagerHandler.sharedManager().countryCode)
+        initPlayButton()
+    }
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+        initPlayButton()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        playButton.frame = CGRect(x: self.bounds.width - 36 - 16, y: 14, width: 36, height: 36)
+    }
+    
+    private func initPlayButton() {
+        playButton = UIButton()
+        playButton.setBackgroundImage(UIImage(named: "play"), for: .normal)
+        playButton.addTarget(self, action: #selector(play(_:)), for: .touchUpInside)
+        addSubview(playButton)
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
-    @IBAction func play(_ sender: Any) {
+    @objc func play(_ sender: Any) {
         if (self.player.currentItem != self.anItem) {
             self.player.stop()
             self.player.replaceCurrentItem(with: self.anItem)

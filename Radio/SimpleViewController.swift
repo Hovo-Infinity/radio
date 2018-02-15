@@ -1,30 +1,38 @@
 //
-//  FavoritesViewController.swift
+//  SimpleViewController.swift
 //  Radio
 //
-//  Created by Hovhannes Stepanyan on 7/27/17.
-//  Copyright © 2017 Hovhannes Stepanyan. All rights reserved.
+//  Created by Hovhannes Stepanyan on 2/15/18.
+//  Copyright © 2018 Hovhannes Stepanyan. All rights reserved.
 //
 
 import UIKit
-import AVKit
 import AVFoundation
 
-class FavoritesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
-    public var urlRequest:NSURLRequest? = nil
+class SimpleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
+
+    private var path:String!
     private var songName:String = ""
     private var musicURLs:Array<URL> {
         get {
             do {
-                return try FileManager.default.contentsOfDirectory(at: FileManager.songPath())
+                return try FileManager.default.contentsOfDirectory(at: URL(fileURLWithPath: path))
             } catch {
                 return []
             }
         }
     }
-    @IBOutlet weak var saveButton: UIBarButtonItem!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var progressView: UIProgressView!
+    
+    init(path aPath:String!) {
+        super.init(nibName: nil, bundle: nil)
+        path = aPath
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,15 +55,13 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         } catch let error as NSError {
             print ("Failed to set the audio session category and mode : \(String(describing: error.localizedFailureReason))")
         }
-        self.navigationItem.title = NSLocalizedString("gen_favorites", comment: "")
-        if self.urlRequest != nil {
-            self.saveButton.isEnabled = true
-        } else {
-            self.saveButton.isEnabled = false
-        }
-        NotificationCenter.default.addObserver(self, selector: #selector(downloadSuccess(notificatin:)), name: NSNotification.Name(rawValue: kDownloadSuccess), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(downloadFail(notificatin:)), name: NSNotification.Name(rawValue: kDownloadFail), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(downloadProgress(notificatin:)), name: NSNotification.Name(rawValue: kDownloadInprogress), object: nil)
+        tableView = UITableView(frame: self.view.bounds)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "directoryCell")
+        tableView.register(MusicTableViewCell.self, forCellReuseIdentifier: "MusicCell")
+        tableView.dataSource = self
+        tableView.delegate = self
+        view.addSubview(tableView)
+        self.edgesForExtendedLayout = []
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,6 +81,15 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
+    private func swipeGestureOnCell(_ cell:UITableViewCell) {
+        let leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeHandler(_:)))
+        leftSwipeGesture.direction = .left
+        cell.addGestureRecognizer(leftSwipeGesture)
+        let rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeHandler(_:)))
+        rightSwipeGesture.direction = .right
+        cell.addGestureRecognizer(rightSwipeGesture)
+    }
+    
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let url = self.musicURLs[indexPath.row]
         if FileManager.default.directoryExcist(atPath: url.path) {
@@ -89,12 +104,11 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let groupAction = UITableViewRowAction(style: .default, title: NSLocalizedString("move_to", comment: "")) {[unowned tableView] (action, indexPath) in
-            let cell:MusicTableViewCell = tableView.cellForRow(at: indexPath) as! MusicTableViewCell;
+        let groupAction = UITableViewRowAction(style: .default, title: NSLocalizedString("move_to", comment: "")) { (action, indexPath) in
+            let cell:MusicTableViewCell = tableView.cellForRow(at: indexPath) as! MusicTableViewCell
             if FileManager.default.createSubdirectoryOfSongPath(maned: "Rap") {
                 do {
                     try FileManager.default.moveItem(at: cell.url!, to: FileManager.songPath().appendingPathComponent("Rap").appendingPathComponent((cell.url?.lastPathComponent)!))
-                    tableView.reloadData()
                 } catch {
                     print(error.localizedDescription)
                 }
@@ -121,6 +135,10 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         
     }
     
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 64;
+    }
+    
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             do {
@@ -132,24 +150,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-
-    @IBAction func save(_ sender: Any) {
-        let alertController = UIAlertController(title: "Save", message: "Write Song Name", preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addTextField { (textField) in
-            textField.placeholder = "Name"
-        }
-        let ok = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) { [unowned self](action) in
-            self.songName = ((alertController.textFields?.first?.text!)?.appending(".mp3"))!
-            Downloader.downloader().download(url: (self.urlRequest?.url!)!, saveTo: FileManager.songPath().appendingPathComponent(self.songName))
-            self.saveButton.isEnabled = false
-        }
-        let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil)
-        alertController.addAction(ok)
-        alertController.addAction(cancel)
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    @IBAction func swipeHandler(_ sender:UISwipeGestureRecognizer?) {
+    @objc func swipeHandler(_ sender:UISwipeGestureRecognizer?) {
         if (sender?.direction == .left) {
             tableView.setEditing(true, animated: true)
         } else if (sender?.direction == .right) {
@@ -157,37 +158,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    @IBAction func back(_ sender: Any) {
-        if let _ = self.navigationController?.viewControllers.first?.isEqual(self) {
-            if self.presentingViewController != nil {
-                self.dismiss(animated: true, completion: nil)
-            }
-        } else if self.navigationController == nil && self.presentingViewController != nil {
-            self.dismiss(animated: true, completion: nil)
-        } else {
-            self.navigationController?.popViewController(animated: true)
-        }
-    }
-    
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
-    }
-    
-    @objc
-    func downloadSuccess(notificatin:Notification) {
-        progressView.progress = 0
-        tableView.reloadData()
-    }
-    
-    @objc
-    func downloadFail(notificatin:Notification) {
-        progressView.setProgress(0, animated: true)
-    }
-    
-    @objc
-    func downloadProgress(notificatin:Notification) {
-        let info = notificatin.userInfo
-        let percent = info?["percent"] as! Float
-        progressView.setProgress(percent, animated: true)
     }
 }
