@@ -275,10 +275,9 @@
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="rLw-iP-SAz" appends="YES" id="dLK-ul-wTV"/>
                                             <outletCollection property="gestureRecognizers" destination="qyZ-G6-Zzm" appends="YES" id="QqV-i9-rZq"/>
-                                            <segue destination="HgW-5i-MRO" kind="push" id="3Rf-q4-5Nq"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="directoryCell" textLabel="Oxb-uK-wAn" style="IBUITableViewCellStyleDefault" id="XxR-TW-ebx">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="directoryCell" textLabel="Oxb-uK-wAn" style="IBUITableViewCellStyleDefault" id="XxR-TW-ebx">
                                         <rect key="frame" x="0.0" y="64.666666666666671" width="375" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XxR-TW-ebx" id="51u-WF-G0p">
@@ -344,36 +343,6 @@
             </objects>
             <point key="canvasLocation" x="1213.5999999999999" y="120.44334975369459"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="3fU-iz-ypj">
-            <objects>
-                <viewController id="HgW-5i-MRO" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="TWV-4M-WeA"/>
-                        <viewControllerLayoutGuide type="bottom" id="eK7-5d-lHg"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="gG9-ri-kop">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="deck" translatesAutoresizingMaskIntoConstraints="NO" id="9db-XA-xiO">
-                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="9db-XA-xiO" secondAttribute="trailing" id="Jlf-ck-brz"/>
-                            <constraint firstItem="eK7-5d-lHg" firstAttribute="top" secondItem="9db-XA-xiO" secondAttribute="bottom" id="UxQ-mU-pTd"/>
-                            <constraint firstItem="9db-XA-xiO" firstAttribute="top" secondItem="TWV-4M-WeA" secondAttribute="bottom" id="cTA-rr-EIz"/>
-                            <constraint firstItem="9db-XA-xiO" firstAttribute="leading" secondItem="gG9-ri-kop" secondAttribute="leading" id="huF-rb-iFB"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="SJp-cA-FvX"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TN0-2r-Xvz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1981.5999999999999" y="119.1904047976012"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="6h1-Ep-Dfb">
             <objects>
@@ -396,7 +365,6 @@
     <resources>
         <image name="back" width="42" height="42"/>
         <image name="browser" width="82" height="81"/>
-        <image name="deck" width="213" height="378"/>
         <image name="downloadedMusic" width="400" height="400"/>
         <image name="farword" width="42" height="42"/>
         <image name="radio" width="170" height="170"/>

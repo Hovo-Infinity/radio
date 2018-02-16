@@ -11,7 +11,6 @@
 		45177C221F27971700918CDE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45177C211F27971700918CDE /* ViewController.swift */; };
 		45177C251F27971700918CDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45177C231F27971700918CDE /* Main.storyboard */; };
 		45177C271F27971700918CDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45177C261F27971700918CDE /* Assets.xcassets */; };
-		45177C2A1F27971700918CDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45177C281F27971700918CDE /* LaunchScreen.storyboard */; };
 		45177C361F279D2200918CDE /* RadioStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45177C351F279D2200918CDE /* RadioStation.swift */; };
 		45177C381F279D9600918CDE /* RequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45177C371F279D9600918CDE /* RequestController.swift */; };
 		45177C3A1F28E93800918CDE /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45177C391F28E93800918CDE /* Extentions.swift */; };
@@ -19,6 +18,8 @@
 		45177C431F29DD9900918CDE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45177C451F29DD9900918CDE /* Localizable.strings */; };
 		45177C471F2B496200918CDE /* MusicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45177C461F2B496200918CDE /* MusicTableViewCell.swift */; };
 		45684A902035769200C49F17 /* SimpleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45684A8E2035769200C49F17 /* SimpleViewController.swift */; };
+		456A4F512036C99F001E221B /* WaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456A4F502036C99F001E221B /* WaveViewController.swift */; };
+		456A4F532036CDDB001E221B /* DrawWaveform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456A4F522036CDDB001E221B /* DrawWaveform.swift */; };
 		459EF7A31F3DC243007FF197 /* VarticalSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459EF7A21F3DC243007FF197 /* VarticalSlider.swift */; };
 		45AAA7CD1F2F7DC900FB8C83 /* PlayerPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AAA7CC1F2F7DC900FB8C83 /* PlayerPopUp.swift */; };
 		45AAA7CF1F30C7A600FB8C83 /* LocationManagerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AAA7CE1F30C7A600FB8C83 /* LocationManagerHandler.swift */; };
@@ -34,17 +35,17 @@
 		45177C211F27971700918CDE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		45177C241F27971700918CDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		45177C261F27971700918CDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		45177C291F27971700918CDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		45177C2B1F27971700918CDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45177C351F279D2200918CDE /* RadioStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioStation.swift; sourceTree = "<group>"; };
 		45177C371F279D9600918CDE /* RequestController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestController.swift; sourceTree = "<group>"; };
 		45177C391F28E93800918CDE /* Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		45177C3B1F29CF4200918CDE /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		45177C411F29DD8A00918CDE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
-		45177C421F29DD8A00918CDE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		45177C441F29DD9900918CDE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		45177C461F2B496200918CDE /* MusicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicTableViewCell.swift; sourceTree = "<group>"; };
 		45684A8E2035769200C49F17 /* SimpleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleViewController.swift; sourceTree = "<group>"; };
+		456A4F502036C99F001E221B /* WaveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveViewController.swift; sourceTree = "<group>"; };
+		456A4F522036CDDB001E221B /* DrawWaveform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawWaveform.swift; sourceTree = "<group>"; };
 		459EF7A21F3DC243007FF197 /* VarticalSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VarticalSlider.swift; sourceTree = "<group>"; };
 		45AAA7CC1F2F7DC900FB8C83 /* PlayerPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerPopUp.swift; sourceTree = "<group>"; };
 		45AAA7CE1F30C7A600FB8C83 /* LocationManagerHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagerHandler.swift; sourceTree = "<group>"; };
@@ -95,7 +96,6 @@
 				45177C211F27971700918CDE /* ViewController.swift */,
 				45177C231F27971700918CDE /* Main.storyboard */,
 				45177C261F27971700918CDE /* Assets.xcassets */,
-				45177C281F27971700918CDE /* LaunchScreen.storyboard */,
 				45177C2B1F27971700918CDE /* Info.plist */,
 				45177C351F279D2200918CDE /* RadioStation.swift */,
 				45177C371F279D9600918CDE /* RequestController.swift */,
@@ -107,6 +107,8 @@
 				45BF0C4E1F3A0FDB00003AB6 /* Downloader.swift */,
 				459EF7A21F3DC243007FF197 /* VarticalSlider.swift */,
 				45684A8E2035769200C49F17 /* SimpleViewController.swift */,
+				456A4F502036C99F001E221B /* WaveViewController.swift */,
+				456A4F522036CDDB001E221B /* DrawWaveform.swift */,
 			);
 			path = Radio;
 			sourceTree = "<group>";
@@ -192,7 +194,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45177C2A1F27971700918CDE /* LaunchScreen.storyboard in Resources */,
 				45177C271F27971700918CDE /* Assets.xcassets in Resources */,
 				45177C431F29DD9900918CDE /* Localizable.strings in Resources */,
 				45C9F82920320F560072D481 /* Localizable.strings in Resources */,
@@ -211,6 +212,7 @@
 				45177C221F27971700918CDE /* ViewController.swift in Sources */,
 				45684A902035769200C49F17 /* SimpleViewController.swift in Sources */,
 				459EF7A31F3DC243007FF197 /* VarticalSlider.swift in Sources */,
+				456A4F532036CDDB001E221B /* DrawWaveform.swift in Sources */,
 				45177C381F279D9600918CDE /* RequestController.swift in Sources */,
 				45AAA7CD1F2F7DC900FB8C83 /* PlayerPopUp.swift in Sources */,
 				45AAA7CF1F30C7A600FB8C83 /* LocationManagerHandler.swift in Sources */,
@@ -219,6 +221,7 @@
 				45177C361F279D2200918CDE /* RadioStation.swift in Sources */,
 				45177C201F27971700918CDE /* AppDelegate.swift in Sources */,
 				45177C471F2B496200918CDE /* MusicTableViewCell.swift in Sources */,
+				456A4F512036C99F001E221B /* WaveViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,15 +235,6 @@
 				45177C411F29DD8A00918CDE /* ru */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		45177C281F27971700918CDE /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				45177C291F27971700918CDE /* Base */,
-				45177C421F29DD8A00918CDE /* ru */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 		45177C451F29DD9900918CDE /* Localizable.strings */ = {

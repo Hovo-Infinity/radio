@@ -81,6 +81,10 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
             let viewController = SimpleViewController(path: url.path)
             viewController.navigationItem.title = url.lastPathComponent
             self.navigationController?.pushViewController(viewController, animated: true)
+        } else {
+            let waveViewController:WaveViewController = WaveViewController(fileUrl: url)
+            waveViewController.navigationItem.title = url.lastPathComponent
+            self.navigationController?.pushViewController(waveViewController, animated: true)
         }
     }
     
