@@ -59,6 +59,7 @@ extension FileManager {
 
 extension AVPlayer {
     static let sharedPlayer = AVPlayer();
+    
     open func stop() {
         self.pause();
         self.seek(to: CMTime(value: 0, timescale: AVPlayer.sharedPlayer.currentTime().timescale));
