@@ -48,10 +48,13 @@ class WaveViewController: UIViewController {
     
     func makeBackground() {
         backgroundImageView = UIImageView(frame: view.bounds)
-        backgroundImageView.image = UIImage(named: "deck")
+        backgroundImageView.image = #imageLiteral(resourceName: "deck")
         view.addSubview(backgroundImageView)
-        waveView = DrawWaveform(frame: CGRect(x: 0, y: backgroundImageView.frame.midY - 32, width: backgroundImageView.frame.width, height: 64))
-        backgroundImageView.addSubview(waveView)
+        DispatchQueue.main.async { [weak self] in
+            guard let `self` = self else { return }
+            self.waveView = DrawWaveform(frame: CGRect(x: 0, y: self.backgroundImageView.frame.midY - 32, width: self.backgroundImageView.frame.width, height: 64))
+            self.backgroundImageView.addSubview((self.waveView)!)
+        }
     }
 
 }

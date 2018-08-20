@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Radio/RequestController.swift"
+            timestampString = "556461988.437366"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "search(_:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Radio.RequestController.search(Swift.String, completion: (Swift.Optional&lt;Swift.Array&lt;Radio.SongItem&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; __ObjC.URLSessionDataTask"
+                  moduleName = "Radio"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hovhannesstepanyan/Git/personal/radio/Radio/RequestController.swift"
+                  timestampString = "556461924.527856"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "956">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__ObjC.URLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in static Radio.RequestController.search(Swift.String, completion: (Swift.Optional&lt;Swift.Array&lt;Radio.SongItem&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; __ObjC.URLSessionDataTask"
+                  moduleName = "Radio"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hovhannesstepanyan/Git/personal/radio/Radio/RequestController.swift"
+                  timestampString = "556461924.5311151"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
