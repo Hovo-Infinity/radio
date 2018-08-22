@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SongItem {
+class SongItem {
     var id: String
     var name: String
     var listenUrl: String?

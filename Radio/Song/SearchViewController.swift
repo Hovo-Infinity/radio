@@ -99,14 +99,12 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchViewController.reuseIdentifier, for: indexPath) as! SongItemCell
-        var song = songs[indexPath.item]
+        let song = songs[indexPath.item]
         cell.update(song: song)
         cell.playTapped = {[weak self] playButton in
             if song.listenUrl == nil {
                 RequestController.getSongUrls(song: song) {songItem, error in
                     if error == nil {
-                        if song.id == songItem.id {
-                            song = songItem
                             let playing = self?.prepareToPlay(song: song)
                             DispatchQueue.main.async {
                                 if playing == true {
@@ -115,7 +113,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
                                     playButton.setImage(#imageLiteral(resourceName: "play_circle"), for: .normal)
                                 }
                             }
-                        }
+                        
                     }
                 }
             } else {
@@ -131,7 +129,6 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
             if song.downloadUrl == nil {
                 RequestController.getSongUrls(song: song) {songItem, error in
                     if error == nil {
-                        song = songItem
                         let downloadUrl = URL(string: song.downloadUrl!)!
                         Downloader.downloader().download(url: downloadUrl, saveTo: FileManager.songPath().appendingPathComponent(song.name))
                     } else {
