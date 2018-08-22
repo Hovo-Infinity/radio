@@ -42,7 +42,7 @@
                                                         </constraints>
                                                         <state key="normal" backgroundImage="downloadedMusic"/>
                                                         <connections>
-                                                            <segue destination="i1J-Tc-YHL" kind="show" id="3K4-sz-6HY"/>
+                                                            <segue destination="qP1-bA-s8i" kind="show" id="KeZ-w3-x7I"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7WD-KG-m4b">
@@ -52,6 +52,9 @@
                                                             <constraint firstAttribute="height" constant="128" id="wdh-bV-X9O"/>
                                                         </constraints>
                                                         <state key="normal" backgroundImage="browser"/>
+                                                        <connections>
+                                                            <segue destination="i1J-Tc-YHL" kind="show" id="1O8-n5-Vhl"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wgb-B3-Sh4">
                                                         <rect key="frame" x="8" y="81" width="128" height="128"/>
@@ -111,7 +114,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QbG-Vv-KMp">
-                                <rect key="frame" x="16" y="100" width="343" height="678"/>
+                                <rect key="frame" x="0.0" y="100" width="375" height="678"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="a4a-cc-o8c">
                                     <size key="itemSize" width="50" height="50"/>
@@ -125,13 +128,24 @@
                                     <outlet property="delegate" destination="i1J-Tc-YHL" id="s0s-pv-ixD"/>
                                 </connections>
                             </collectionView>
-                            <searchBar contentMode="redraw" placeholder="Search" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tBn-W2-Xs7">
-                                <rect key="frame" x="0.0" y="44" width="375" height="56"/>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tBn-W2-Xs7">
+                                <rect key="frame" x="44" y="44" width="331" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="i1J-Tc-YHL" id="bxv-mE-xQr"/>
                                 </connections>
                             </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qEX-OB-qvJ">
+                                <rect key="frame" x="0.0" y="50" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="RNl-qm-qzy"/>
+                                    <constraint firstAttribute="width" constant="44" id="bri-AT-Ckc"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="back"/>
+                                <connections>
+                                    <action selector="back" destination="i1J-Tc-YHL" eventType="touchUpInside" id="mFL-dQ-ESs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -139,13 +153,16 @@
                             <constraint firstItem="QbG-Vv-KMp" firstAttribute="top" secondItem="tBn-W2-Xs7" secondAttribute="bottom" id="FUd-es-bUD"/>
                             <constraint firstItem="res-yC-wKF" firstAttribute="top" secondItem="QbG-Vv-KMp" secondAttribute="bottom" id="GVC-Z8-3QZ"/>
                             <constraint firstAttribute="trailing" secondItem="tBn-W2-Xs7" secondAttribute="trailing" id="HLu-P5-Jd2"/>
-                            <constraint firstItem="QbG-Vv-KMp" firstAttribute="leading" secondItem="VG0-IH-nzM" secondAttribute="leadingMargin" id="TA3-DP-qjH"/>
-                            <constraint firstItem="tBn-W2-Xs7" firstAttribute="leading" secondItem="VG0-IH-nzM" secondAttribute="leading" id="Uvq-Nk-BaI"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="QbG-Vv-KMp" secondAttribute="trailing" id="pod-rr-K2z"/>
+                            <constraint firstItem="qEX-OB-qvJ" firstAttribute="centerY" secondItem="tBn-W2-Xs7" secondAttribute="centerY" id="Obq-fr-7hv"/>
+                            <constraint firstItem="QbG-Vv-KMp" firstAttribute="leading" secondItem="VG0-IH-nzM" secondAttribute="leading" id="TA3-DP-qjH"/>
+                            <constraint firstItem="tBn-W2-Xs7" firstAttribute="leading" secondItem="VG0-IH-nzM" secondAttribute="leading" constant="44" id="Uvq-Nk-BaI"/>
+                            <constraint firstItem="qEX-OB-qvJ" firstAttribute="leading" secondItem="VG0-IH-nzM" secondAttribute="leading" id="iTL-GH-YVF"/>
+                            <constraint firstAttribute="trailing" secondItem="QbG-Vv-KMp" secondAttribute="trailing" id="pod-rr-K2z"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="QbG-Vv-KMp" id="hIo-Hl-gMo"/>
+                        <outlet property="searchBar" destination="tBn-W2-Xs7" id="GRN-1L-cFj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6EY-bS-lH6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -276,7 +293,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-182" y="542"/>
+            <point key="canvasLocation" x="-378" y="507"/>
         </scene>
         <!--Favorites View Controller-->
         <scene sceneID="jbk-pU-ZCW">
@@ -421,6 +438,6 @@
         <image name="radio" width="170" height="170"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5OZ-cn-XyS"/>
+        <segue reference="KeZ-w3-x7I"/>
     </inferredMetricsTieBreakers>
 </document>

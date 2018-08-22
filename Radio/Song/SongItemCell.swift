@@ -12,6 +12,9 @@ class SongItemCell: UICollectionViewCell {
 
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var playButton: UIButton!
+    @IBOutlet weak var downloadProgressView: UIProgressView!
+    var playTapped: ((UIButton)->Void)?
+    var saveTapped: (()->Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,5 +24,12 @@ class SongItemCell: UICollectionViewCell {
     func update(song: SongItem) {
         titleLabel.text = song.name
     }
-
+    
+    @IBAction func saveToPlaylist() {
+        saveTapped?()
+    }
+    
+    @IBAction private func playButtonTapped(_ sender: UIButton) {
+        playTapped?(sender)
+    }
 }

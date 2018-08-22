@@ -40,10 +40,36 @@ class RequestController: NSObject {
             } else {
                 completion(nil, error)
             }
-        };
+        }
         defer {
             dataTask.resume();
         }
         return dataTask
+    }
+    
+    class func getSongUrls(song: SongItem, completion: @escaping(SongItem, Error?)->Void) {
+        var urlComponents = URLComponents(string: baseUrl + song.id)
+        let url = urlComponents?.url!
+        let UrlRequest:NSMutableURLRequest = NSMutableURLRequest(url: url!, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 3);
+        UrlRequest.httpMethod = "GET";
+        let session:URLSession = URLSession(configuration: URLSessionConfiguration.default);
+        var tempSong = song
+        let dataTask = session.dataTask(with: UrlRequest as URLRequest) { (data, UrlResponse, error) in
+            if error == nil {
+                let htmlString = String(data: data!, encoding: .utf8)
+                let document = try? SwiftSoup.parse(htmlString!)
+                var elements = try? document?.select(".jp-play")
+                let playElem = elements!!.get(0)
+                tempSong.listenUrl = try? playElem.attr("href")
+                elements = try? document?.select(".download")
+                tempSong.downloadUrl = try! elements!!.first()?.child(0).attr("href")
+                completion(tempSong, nil)
+            } else {
+                completion(tempSong, error)
+            }
+        }
+        defer {
+            dataTask.resume();
+        }
     }
 }

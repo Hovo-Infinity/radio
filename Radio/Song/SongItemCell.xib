@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SongItemCell" customModule="Radio" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="462" height="112"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="462" height="112"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KS7-zl-vKV">
+                        <rect key="frame" x="20" y="46" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9R-GD-Rof">
+                        <rect key="frame" x="412" y="44" width="30" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="UYN-Kk-B1p"/>
+                        </constraints>
+                        <state key="normal" image="play_circle"/>
+                        <connections>
+                            <action selector="playButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="DJ5-2p-PO9"/>
+                        </connections>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UEL-6l-8Us">
+                        <rect key="frame" x="18" y="111.5" width="426" height="0.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="mZf-0S-vVj"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HOg-2h-HYH" userLabel="save">
+                        <rect key="frame" x="374" y="44" width="30" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="Csf-V4-6r1"/>
+                        </constraints>
+                        <state key="normal" image="playlist_add"/>
+                        <connections>
+                            <action selector="saveToPlaylist" destination="gTV-IL-0wX" eventType="touchUpInside" id="qkO-Iy-1B8"/>
+                        </connections>
+                    </button>
+                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g3C-YL-LlA">
+                        <rect key="frame" x="0.0" y="109.5" width="462" height="2"/>
+                    </progressView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="KS7-zl-vKV" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="0KC-76-62v"/>
+                <constraint firstAttribute="trailing" secondItem="g3C-YL-LlA" secondAttribute="trailing" id="20k-9t-cCy"/>
+                <constraint firstItem="HOg-2h-HYH" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="DHQ-w9-13b"/>
+                <constraint firstItem="c9R-GD-Rof" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="DpX-2C-ggi"/>
+                <constraint firstAttribute="trailing" secondItem="UEL-6l-8Us" secondAttribute="trailing" constant="18" id="FeJ-4L-17Q"/>
+                <constraint firstAttribute="trailingMargin" secondItem="c9R-GD-Rof" secondAttribute="trailing" id="JIQ-JI-bPI"/>
+                <constraint firstItem="c9R-GD-Rof" firstAttribute="leading" secondItem="HOg-2h-HYH" secondAttribute="trailing" constant="8" id="Jd0-gv-Yr4"/>
+                <constraint firstItem="UEL-6l-8Us" firstAttribute="top" secondItem="g3C-YL-LlA" secondAttribute="bottom" id="LYI-gG-J74"/>
+                <constraint firstItem="HOg-2h-HYH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KS7-zl-vKV" secondAttribute="trailing" constant="15" id="QwB-Ds-QaD"/>
+                <constraint firstItem="g3C-YL-LlA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="a0E-If-rm2"/>
+                <constraint firstAttribute="bottom" secondItem="UEL-6l-8Us" secondAttribute="bottom" id="bQc-Xf-Yp7"/>
+                <constraint firstItem="UEL-6l-8Us" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="18" id="fOb-uL-yGc"/>
+                <constraint firstItem="KS7-zl-vKV" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="hM5-Gf-KOZ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="462" height="112"/>
+            <connections>
+                <outlet property="downloadProgressView" destination="g3C-YL-LlA" id="w5l-9f-nNg"/>
+                <outlet property="playButton" destination="c9R-GD-Rof" id="Ho0-xt-HDZ"/>
+                <outlet property="titleLabel" destination="KS7-zl-vKV" id="hnX-Is-wK4"/>
+            </connections>
+            <point key="canvasLocation" x="90" y="85"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="play_circle" width="24" height="24"/>
+        <image name="playlist_add" width="24" height="24"/>
+    </resources>
+</document>

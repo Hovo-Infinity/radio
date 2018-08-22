@@ -123,10 +123,7 @@
 				45684A8E2035769200C49F17 /* SimpleViewController.swift */,
 				456A4F502036C99F001E221B /* WaveViewController.swift */,
 				456A4F522036CDDB001E221B /* DrawWaveform.swift */,
-				A45B91AA212ADE0E000BBC67 /* SongItem.swift */,
-				A45B91AC212AE679000BBC67 /* SearchViewController.swift */,
-				A45B91AE212AED09000BBC67 /* SongItemCell.swift */,
-				A45B91AF212AED09000BBC67 /* SongItemCell.xib */,
+				A41ACDE9212D7C8800FD2416 /* Song */,
 			);
 			path = Radio;
 			sourceTree = "<group>";
@@ -148,6 +145,17 @@
 				F3FEA8DD657A3BC7505AAD92 /* Pods-Radio.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		A41ACDE9212D7C8800FD2416 /* Song */ = {
+			isa = PBXGroup;
+			children = (
+				A45B91AA212ADE0E000BBC67 /* SongItem.swift */,
+				A45B91AC212AE679000BBC67 /* SearchViewController.swift */,
+				A45B91AE212AED09000BBC67 /* SongItemCell.swift */,
+				A45B91AF212AED09000BBC67 /* SongItemCell.xib */,
+			);
+			path = Song;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -449,7 +457,7 @@
 				CODE_SIGN_ENTITLEMENTS = Radio/Radio.entitlements;
 				DEVELOPMENT_TEAM = D46YYHA8A9;
 				INFOPLIST_FILE = Radio/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swift.Music;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -467,7 +475,7 @@
 				CODE_SIGN_ENTITLEMENTS = Radio/Radio.entitlements;
 				DEVELOPMENT_TEAM = D46YYHA8A9;
 				INFOPLIST_FILE = Radio/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swift.Music;
 				PRODUCT_NAME = "$(TARGET_NAME)";
