@@ -26,6 +26,7 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        AVPlayer.sharedPlayer = player
         collectionView.register(UINib(nibName: "SongItemCell", bundle: nil), forCellWithReuseIdentifier: SearchViewController.reuseIdentifier)
         dataTask = RequestController.search("") {[weak self] (songs, error) in
             if error == nil {
@@ -130,14 +131,14 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
                 RequestController.getSongUrls(song: song) {songItem, error in
                     if error == nil {
                         let downloadUrl = URL(string: song.downloadUrl!)!
-                        Downloader.downloader().download(url: downloadUrl, saveTo: FileManager.songPath().appendingPathComponent(song.name))
+                        Downloader.downloader().download(url: downloadUrl, saveTo: FileManager.songPath().appendingPathComponent(song.name + FileExtensions.mp3.rawValue))
                     } else {
                         print(error!.localizedDescription)
                     }
                 }
             } else {
                 let downloadUrl = URL(string: song.downloadUrl!)!
-                Downloader.downloader().download(url: downloadUrl, saveTo: FileManager.songPath().appendingPathComponent(song.name))
+                Downloader.downloader().download(url: downloadUrl, saveTo: FileManager.songPath().appendingPathComponent(song.name + FileExtensions.mp3.rawValue))
             }
             
         }

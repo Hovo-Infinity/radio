@@ -13,21 +13,22 @@ import AVFoundation
 class FavoritesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     public var urlRequest:NSURLRequest? = nil
     private var songName:String = ""
-    private var musicURLs:Array<URL> {
-        get {
+    private var musicURLs:Array<URL> = {
             do {
                 return try FileManager.default.contentsOfDirectory(at: FileManager.songPath())
             } catch {
                 return []
             }
-        }
-    }
+    }()
+    var player: AVPlayer!
+    private var nowPlayingIndex: Int = NSNotFound
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var progressView: UIProgressView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initPlayer()
         let session = AVAudioSession.sharedInstance()
         do {
             if #available(iOS 10.0, *) {
@@ -58,6 +59,14 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         NotificationCenter.default.addObserver(self, selector: #selector(downloadProgress(notificatin:)), name: NSNotification.Name(rawValue: kDownloadInprogress), object: nil)
     }
     
+    private func initPlayer() {
+        let url = musicURLs.first!
+        let asset = AVAsset(url: url)
+        let item = AVPlayerItem(asset: asset)
+        player = AVPlayer(playerItem: item)
+        AVPlayer.sharedPlayer = player
+    }
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.musicURLs.count
     }
@@ -69,9 +78,51 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
             cell.textLabel?.text = url.lastPathComponent
             return cell
         } else {
-            let cell:MusicTableViewCell = tableView.dequeueReusableCell(withIdentifier: "MusicCell", for: indexPath) as! MusicTableViewCell
-            cell.setURL(_url: self.musicURLs[indexPath.row]);
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MusicCell", for: indexPath) as! MusicTableViewCell
+            cell.playButton.addTarget(self, action: #selector(play(_:)), for: .touchUpInside)
+            cell.playButton.tag = indexPath.row
             return cell
+        }
+    }
+    
+    @objc
+    private func play(_ sender: PlayButton) {
+        if (nowPlayingIndex != sender.tag) {
+            nowPlayingIndex = sender.tag
+            let url = musicURLs[nowPlayingIndex]
+            let asset = AVAsset(url: url)
+            let item = AVPlayerItem(asset: asset)
+            player.replaceCurrentItem(with: item)
+            player.play()
+            sender.isPlaying = true
+        } else {
+            if (self.player.status == AVPlayerStatus.readyToPlay) {
+                if #available(iOS 10.0, *) {
+                    if (self.player.timeControlStatus == AVPlayerTimeControlStatus.waitingToPlayAtSpecifiedRate ||
+                        self.player.timeControlStatus == AVPlayerTimeControlStatus.paused) {
+                        self.player.play()
+                        sender.isPlaying = true
+                    } else {
+                        self.player.pause()
+                        sender.isPlaying = false
+                    }
+                } else {
+                    // Fallback on earlier versions
+                    if (self.player.rate == 0.0) {
+                        self.player.play()
+                        sender.isPlaying = true
+                    } else {
+                        player.pause()
+                        sender.isPlaying = false
+                    }
+                }
+            } else {
+                let alert = UIAlertController(title:
+                    self.player.error?.localizedDescription, message: nil, preferredStyle: UIAlertControllerStyle.alert)
+                let ok = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil);
+                alert.addAction(ok)
+                UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+            }
         }
     }
     
@@ -94,10 +145,10 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let groupAction = UITableViewRowAction(style: .default, title: NSLocalizedString("move_to", comment: "")) {[unowned tableView] (action, indexPath) in
-            let cell:MusicTableViewCell = tableView.cellForRow(at: indexPath) as! MusicTableViewCell;
             if FileManager.default.createSubdirectoryOfSongPath(maned: "Rap") {
                 do {
-                    try FileManager.default.moveItem(at: cell.url!, to: FileManager.songPath().appendingPathComponent("Rap").appendingPathComponent((cell.url?.lastPathComponent)!))
+                    let url = self.musicURLs[indexPath.row]
+                    try FileManager.default.moveItem(at: url, to: FileManager.songPath().appendingPathComponent("Rap").appendingPathComponent((url.lastPathComponent)))
                     tableView.reloadData()
                 } catch {
                     print(error.localizedDescription)
@@ -108,7 +159,8 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         let deleteAction = UITableViewRowAction(style: .destructive, title: NSLocalizedString("delete", comment: "")) { [unowned self](action, indexPath) in
             do {
                 try FileManager.default.removeItem(at: self.musicURLs[indexPath.row]);
-                tableView .deleteRows(at: [indexPath], with: .fade)
+                self.musicURLs.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
             } catch {
                 print(error.localizedDescription)
             }

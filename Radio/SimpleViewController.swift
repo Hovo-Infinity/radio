@@ -76,7 +76,6 @@ class SimpleViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return cell
         } else {
             let cell:MusicTableViewCell = tableView.dequeueReusableCell(withIdentifier: "MusicCell", for: indexPath) as! MusicTableViewCell
-            cell.setURL(_url: self.musicURLs[indexPath.row]);
             return cell
         }
     }
@@ -108,7 +107,8 @@ class SimpleViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let cell:MusicTableViewCell = tableView.cellForRow(at: indexPath) as! MusicTableViewCell
             if FileManager.default.createSubdirectoryOfSongPath(maned: "Rap") {
                 do {
-                    try FileManager.default.moveItem(at: cell.url!, to: FileManager.songPath().appendingPathComponent("Rap").appendingPathComponent((cell.url?.lastPathComponent)!))
+                    let url = self.musicURLs[indexPath.row]
+                    try FileManager.default.moveItem(at: url, to: FileManager.songPath().appendingPathComponent("Rap").appendingPathComponent((url.lastPathComponent)))
                 } catch {
                     print(error.localizedDescription)
                 }

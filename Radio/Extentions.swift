@@ -58,7 +58,7 @@ extension FileManager {
 }
 
 extension AVPlayer {
-    static let sharedPlayer = AVPlayer();
+    static var sharedPlayer = AVPlayer();
     
     open func stop() {
         self.pause();
@@ -78,6 +78,22 @@ let _sharedPlayer:AVAudioPlayer = AVAudioPlayer();
 extension AVAudioPlayer {
     class func sharedAudioPlayer() -> AVAudioPlayer {
         return _sharedPlayer;
+    }
+}
+
+extension AVQueuePlayer {
+    func playItemAt(_ index: Int) {
+        if items().count > index, currentItem != nil {
+            var currentIndex = items().index(of: currentItem!)!
+            while currentIndex < index {
+                advanceToNextItem()
+                currentIndex += 1
+            }
+            while currentIndex > index {
+                advanceToNextItem()
+                currentIndex -= 1
+            }
+        }
     }
 }
 

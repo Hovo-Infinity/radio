@@ -31,6 +31,8 @@
 		A45B91AD212AE679000BBC67 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45B91AC212AE679000BBC67 /* SearchViewController.swift */; };
 		A45B91B0212AED09000BBC67 /* SongItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45B91AE212AED09000BBC67 /* SongItemCell.swift */; };
 		A45B91B1212AED09000BBC67 /* SongItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A45B91AF212AED09000BBC67 /* SongItemCell.xib */; };
+		A4E21685212ED2EF00CEF7C1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E21684212ED2EF00CEF7C1 /* Constants.swift */; };
+		A4E21687212EF9C000CEF7C1 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E21686212EF9C000CEF7C1 /* PlayButton.swift */; };
 		BAC4FDF66CFB2296F17055CA /* Pods_Radio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 325874BCBA9B876160930C25 /* Pods_Radio.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +67,8 @@
 		A45B91AC212AE679000BBC67 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		A45B91AE212AED09000BBC67 /* SongItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongItemCell.swift; sourceTree = "<group>"; };
 		A45B91AF212AED09000BBC67 /* SongItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SongItemCell.xib; sourceTree = "<group>"; };
+		A4E21684212ED2EF00CEF7C1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A4E21686212EF9C000CEF7C1 /* PlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
 		F3FEA8DD657A3BC7505AAD92 /* Pods-Radio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Radio.release.xcconfig"; path = "Pods/Target Support Files/Pods-Radio/Pods-Radio.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,6 +128,8 @@
 				456A4F502036C99F001E221B /* WaveViewController.swift */,
 				456A4F522036CDDB001E221B /* DrawWaveform.swift */,
 				A41ACDE9212D7C8800FD2416 /* Song */,
+				A4E21684212ED2EF00CEF7C1 /* Constants.swift */,
+				A4E21686212EF9C000CEF7C1 /* PlayButton.swift */,
 			);
 			path = Radio;
 			sourceTree = "<group>";
@@ -294,6 +300,7 @@
 				45177C381F279D9600918CDE /* RequestController.swift in Sources */,
 				45AAA7CD1F2F7DC900FB8C83 /* PlayerPopUp.swift in Sources */,
 				45AAA7CF1F30C7A600FB8C83 /* LocationManagerHandler.swift in Sources */,
+				A4E21687212EF9C000CEF7C1 /* PlayButton.swift in Sources */,
 				45177C3D1F29CF4200918CDE /* FavoritesViewController.swift in Sources */,
 				45177C3A1F28E93800918CDE /* Extentions.swift in Sources */,
 				A45B91B0212AED09000BBC67 /* SongItemCell.swift in Sources */,
@@ -303,6 +310,7 @@
 				45177C201F27971700918CDE /* AppDelegate.swift in Sources */,
 				45177C471F2B496200918CDE /* MusicTableViewCell.swift in Sources */,
 				456A4F512036C99F001E221B /* WaveViewController.swift in Sources */,
+				A4E21685212ED2EF00CEF7C1 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
