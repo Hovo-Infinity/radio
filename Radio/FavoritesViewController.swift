@@ -81,20 +81,41 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
             let cell = tableView.dequeueReusableCell(withIdentifier: "MusicCell", for: indexPath) as! MusicTableViewCell
             cell.playButton.addTarget(self, action: #selector(play(_:)), for: .touchUpInside)
             cell.playButton.tag = indexPath.row
+            cell.playButton.isPlaying = nowPlayingIndex == indexPath.item
+            configCell(cell)
             return cell
+        }
+    }
+    
+    private func configCell(_ cell: MusicTableViewCell) {
+        let url = musicURLs[cell.playButton.tag]
+        let asset = AVAsset(url: url)
+        for metaDataItems in asset.commonMetadata {
+            //getting the title of the song
+            if metaDataItems.commonKey!.rawValue == "title" {
+                let titleData = metaDataItems.value as! String
+                cell.textLabel?.text = titleData
+            }
+            //getting the "Artist of the mp3 file"
+            if metaDataItems.commonKey!.rawValue == "artist" {
+                let artistData = metaDataItems.value as! String
+                cell.detailTextLabel?.text = artistData
+                print("artist ---> \(artistData)")
+            }
         }
     }
     
     @objc
     private func play(_ sender: PlayButton) {
         if (nowPlayingIndex != sender.tag) {
+            let reloadIndexes = [IndexPath(row: nowPlayingIndex, section: 0), IndexPath(row: sender.tag, section: 0)]
             nowPlayingIndex = sender.tag
             let url = musicURLs[nowPlayingIndex]
             let asset = AVAsset(url: url)
             let item = AVPlayerItem(asset: asset)
             player.replaceCurrentItem(with: item)
             player.play()
-            sender.isPlaying = true
+            tableView.reloadRows(at: reloadIndexes, with: .automatic)
         } else {
             if (self.player.status == AVPlayerStatus.readyToPlay) {
                 if #available(iOS 10.0, *) {

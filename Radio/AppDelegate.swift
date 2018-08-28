@@ -70,11 +70,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func setupCommandCenter() {
-        MPNowPlayingInfoCenter.default().nowPlayingInfo = [MPMediaItemPropertyTitle: "Radio"]
-        
+        guard let currentItem = AVPlayer.sharedPlayer.currentItem else { return }
+        let asset = currentItem.asset
+        var nowPlayingInfo = [String: Any]()
+        for metaDataItems in asset.commonMetadata {
+            //getting the title of the song
+            if metaDataItems.commonKey!.rawValue == "title" {
+                let titleData = metaDataItems.value as! NSString
+                nowPlayingInfo[MPMediaItemPropertyTitle] = titleData
+            }
+            //getting the "Artist of the mp3 file"
+            if metaDataItems.commonKey!.rawValue == "artist" {
+                let artistData = metaDataItems.value as! NSString
+                nowPlayingInfo[MPMediaItemPropertyArtist] = artistData
+                print("artist ---> \(artistData)")
+            }
+            //getting the thumbnail image associated with file
+            if metaDataItems.commonKey!.rawValue == "artwork" {
+                let imageData = metaDataItems.value as! Data
+                let image2: UIImage = UIImage(data: imageData)!
+                nowPlayingInfo[MPMediaItemPropertyArtwork] = image2
+            }
+        }
+        nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = NSNumber(value: currentItem.duration.seconds)
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+    
         let commandCenter = MPRemoteCommandCenter.shared()
         commandCenter.playCommand.isEnabled = true
         commandCenter.pauseCommand.isEnabled = true
+        commandCenter.changePlaybackPositionCommand.isEnabled = true
         commandCenter.playCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
             AVQueuePlayer.sharedPlayer.play()
             return .success
@@ -83,6 +107,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             AVQueuePlayer.sharedPlayer.pause()
             return .success
         }
+        commandCenter.changePlaybackPositionCommand.addTarget(handler: {
+            if $0 is MPChangePlaybackPositionCommandEvent {
+                let timePosition = ($0 as! MPChangePlaybackPositionCommandEvent).positionTime
+                AVPlayer.sharedPlayer.currentItem?.seek(to: CMTime(seconds: timePosition, preferredTimescale: 1))
+            }
+            return .success
+        })
         
     }
 
